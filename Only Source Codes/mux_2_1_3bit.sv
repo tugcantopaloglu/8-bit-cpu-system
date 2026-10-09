@@ -28,7 +28,7 @@ module mux_2_1_3bit (
     ); 
     //0 veya 1 durumuna göre farklý atamalarý yapýyoruz
 
-    always @(rd_addr,rb_addr,final_addr)
+    always @(*)
     begin
         if(sel == 0) 
             final_addr = rb_addr; 

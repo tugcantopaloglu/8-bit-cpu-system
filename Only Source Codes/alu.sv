@@ -43,6 +43,8 @@ parameter	ALU_OP_ADD	= 4'b0000,
             
 always @(*) 
 begin
+	aluout = 8'd0;
+	br = 1'b0;
 	case(alufn)
 			ALU_OP_ADD 	: aluout = ra + rb_or_imm;
 			ALU_OP_SUB 	: aluout = ra - rb_or_imm;

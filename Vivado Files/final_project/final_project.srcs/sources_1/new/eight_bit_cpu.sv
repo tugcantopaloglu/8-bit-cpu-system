@@ -80,6 +80,7 @@ control  control(
 		 .alufn(alufn),
 		 .mem_write(mem_write),
 		 .mem_read(mem_read),
+		 .mem_to_reg(mem_to_reg),
 		 .nia(nia)
 		 );
 
@@ -119,7 +120,8 @@ alu  alu (
 datamem datamem(
 		.read_addr(aluout),
 		.write_addr(aluout),
-		.write_data(rd),
+		.write_data(rb),
+		.clk(clk),
 		.mem_write(mem_write),
 		.mem_read(mem_read),
 		.read_data(mem_out)

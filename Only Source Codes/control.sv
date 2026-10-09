@@ -34,9 +34,17 @@ module control (
 //decoder ile ayýrdýðýmýz bitleri burada instruction set'e göre iþlemlere sokup deðerleri belirliyoruz
 always @(*) 
 begin
+	alufn = 4'b0000;
+	alusrc = 1'b0;
+	mem_to_reg = 1'b1;
+	reg_dst = 1'b0;
+	reg_write = 1'b0;
+	mem_read = 1'b0;
+	mem_write = 1'b0;
+	nia = 1'b1;
 	if (opcode == 4'b0000) 
 	begin
-		if (func == 4'b000) 
+		if (func == 3'b000)
 		begin
 		alufn		= 4'b0000; //alu function'nu seçiyor yani hangi iþlemin yapýlacaðý
 		alusrc		= 1'b0; //bu iþlem hemen mi yapýlacak yoksa kayýt mý edilecek
@@ -116,7 +124,7 @@ begin
 	else if (opcode==4'b1000)
 		begin
 		alufn		= 4'b0111;
-		alusrc		= 1'b1;
+		alusrc		= 1'b0;
 		reg_write	= 1'b0;
 		mem_read	= 1'b0;
 		mem_write	= 1'b0;

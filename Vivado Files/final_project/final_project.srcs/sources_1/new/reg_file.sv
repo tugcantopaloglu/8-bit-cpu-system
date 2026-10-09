@@ -45,7 +45,7 @@ end
 
 always@(posedge clk)  //her clk'ta yazılacak bir şey varsa array'a yazıyoruz
 begin
-	if(reg_write_en) begin reg_array[reg_write_addr] = reg_write_data;
+	if(reg_write_en) begin reg_array[reg_write_addr] <= reg_write_data;
 	end
 end
 
@@ -62,7 +62,7 @@ initial
   "\treg[4] = %b\n", reg_array[4],
   "\treg[5] = %b\n", reg_array[5],
   "\treg[6] = %b\n", reg_array[6],
-  "\treg[7] = %b\n", reg_array[7]);
+  "\treg[7] = %b", reg_array[7]);
   
   $fclose(f);
  end

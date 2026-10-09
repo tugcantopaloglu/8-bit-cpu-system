@@ -25,6 +25,6 @@ module imem (
 			output [15:0] inst); 
 //memory bilgilerini alýyoruz kodu çözülecek olan 16 bitlik bir deðer verir (her satýr bir deðer)
 reg [15:0] RAM [255:0]; 
-initial $readmemb ("memfile.dat",RAM,0,2); 
+initial $readmemb ("memfile.dat",RAM,0,255);
 assign inst = RAM[addr];
 endmodule

@@ -27,7 +27,7 @@ module datamem (
 				input mem_write,
 				input mem_read,
 				input clk, 
-				output reg [7:0] read_data
+				output [7:0] read_data
 				);
 
 reg [7:0] register [255:0];
@@ -36,7 +36,8 @@ reg [7:0] register [255:0];
 //kayıt dosyasına gider
 always@(posedge clk) 
 begin
-	if(mem_write) register[write_addr] = write_data;
-	if(mem_read) read_data = register[read_addr];
+	if(mem_write) register[write_addr] <= write_data;
 end
+
+assign read_data = mem_read ? register[read_addr] : 8'd0;
 endmodule 

@@ -30,7 +30,19 @@ initial
 	begin
 		clk<=0;
 		clk2<=0;
-		#700
+		#699
+		if (cpu.regfile.reg_array[0] !== 8'd30 ||
+		    cpu.regfile.reg_array[1] !== 8'd30 ||
+		    cpu.regfile.reg_array[2] !== 8'd60 ||
+		    cpu.regfile.reg_array[3] !== 8'd0 ||
+		    cpu.regfile.reg_array[4] !== 8'd0 ||
+		    cpu.regfile.reg_array[5] !== 8'd0 ||
+		    cpu.regfile.reg_array[6] !== 8'd0 ||
+		    cpu.regfile.reg_array[7] !== 8'd0 ||
+		    cpu.pc_current !== 8'd3)
+		    $fatal(1, "Sample program produced unexpected CPU state");
+		#2
+		$display("PASS: sample program");
 		$finish;
 	end
 always 

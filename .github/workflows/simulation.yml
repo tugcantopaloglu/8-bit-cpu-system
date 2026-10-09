@@ -1,0 +1,21 @@
+name: CPU simulation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  simulate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Install simulator
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes iverilog
+      - name: Simulate both source sets
+        run: python3 tests/run_simulation.py
